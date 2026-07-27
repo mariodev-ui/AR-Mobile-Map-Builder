@@ -21,7 +21,7 @@ public class ARInventoryUI : MonoBehaviour
 
     public void UpdateInventory(string[] newItems)
     {
-        // Clear existing items
+        // Clear existing items from the inventory container
         foreach (Transform child in inventoryContainer)
         {
             Destroy(child.gameObject);

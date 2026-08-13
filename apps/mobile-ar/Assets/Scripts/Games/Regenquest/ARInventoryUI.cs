@@ -21,6 +21,12 @@ public class ARInventoryUI : MonoBehaviour
 
     public void UpdateInventory(string[] newItems)
     {
+        if (newItems == null || newItems.Length == 0)
+        {
+            Debug.LogWarning("No items to update in inventory.");
+            return;
+        }
+
         // Clear existing items from the inventory container
         foreach (Transform child in inventoryContainer)
         {

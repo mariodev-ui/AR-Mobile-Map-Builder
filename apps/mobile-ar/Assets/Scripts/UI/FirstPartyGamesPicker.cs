@@ -24,5 +24,13 @@ public class FirstPartyGamesPicker : MonoBehaviour
             selectedGameText.text = $"Selected Game: {index + 1}";
         }
         // Add your logic here to handle the selected game
+        HandleSelectedGame(index);
+    }
+
+    void HandleSelectedGame(int index)
+    {
+        // Add your logic here to handle the selected game
+        // For example, you can enable or disable buttons, update game settings, etc.
+        Debug.Log($"Handling selected game: {index + 1}");
     }
 }

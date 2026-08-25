@@ -13,9 +13,7 @@ public class ARInventoryUI : MonoBehaviour
 
         foreach (string itemName in eventItems)
         {
-            GameObject newItem = Instantiate(itemTemplate, inventoryContainer);
-            newItem.transform.Find("ItemName").GetComponent<Text>().text = itemName;
-            // Add any other necessary setup for the item
+            UpdateInventory(new string[] { itemName });
         }
     }
 
@@ -36,9 +34,24 @@ public class ARInventoryUI : MonoBehaviour
         // Add new items to the inventory
         foreach (string itemName in newItems)
         {
-            GameObject newItem = Instantiate(itemTemplate, inventoryContainer);
-            newItem.transform.Find("ItemName").GetComponent<Text>().text = itemName;
-            // Add any other necessary setup for the item
+            if (!ItemExists(itemName))
+            {
+                GameObject newItem = Instantiate(itemTemplate, inventoryContainer);
+                newItem.transform.Find("ItemName").GetComponent<Text>().text = itemName;
+                // Add any other necessary setup for the item
+            }
         }
+    }
+
+    private bool ItemExists(string itemName)
+    {
+        foreach (Transform child in inventoryContainer)
+        {
+            if (child.transform.Find("ItemName").GetComponent<Text>().text == itemName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
